@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatToolbarModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material';
+import { OrderModule } from './order/order.module';
 
 @NgModule({
   declarations: [
@@ -14,8 +15,10 @@ import { MatInputModule, MatToolbarModule } from '@angular/material';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatInputModule,
-    MatToolbarModule
+
+    MatToolbarModule,
+    // feature modules
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
