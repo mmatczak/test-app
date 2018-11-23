@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material';
 import { OrderModule } from './order/order.module';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { translationDE } from './shared/i18n/translation-de';
+import { translationEN } from './shared/i18n/translation-en';
+import { UserService } from './shared/user/user.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,7 @@ import { OrderModule } from './order/order.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-
+    TranslateModule.forRoot(),
     MatToolbarModule,
     // feature modules
     OrderModule
@@ -24,4 +28,15 @@ import { OrderModule } from './order/order.module';
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(translate: TranslateService, user: UserService) {
+    translate.setTranslation('de', translationDE);
+    translate.setTranslation('en', translationEN);
+    translate.setDefaultLang('de');
+
+    user.getTranslations().subscribe(translations => {
+        translate.setTranslation('de', {...translationDE, ...translations['de']});
+        translate.setTranslation('en', {...translationEN, ...translations['en']});
+      }
+    );
+  }
 }
