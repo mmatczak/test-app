@@ -1,8 +1,8 @@
 @import '~@angular/material/theming';
-@import '~bootstrap/scss/variables';
+@import 'test-app-variables';
 
 $test-app-typography: mat-typography-config(
-  $font-family: $font-family-sans-serif,
+  $font-family: $test-app-font-family,
   $headline: mat-typography-level(32px, 48px, 700),
   $body-1: mat-typography-level(16px, 24px, 500)
 );
@@ -18,7 +18,9 @@ $test-app-typography: mat-typography-config(
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
-$test-app-mat-primary: (
+
+/* For use in src/lib/core/theming/_palette.scss */
+$test-app-mat-accent: (
   50 : #fce0e4,
   100 : #f6b3ba,
   200 : #f1808d,
@@ -51,7 +53,7 @@ $test-app-mat-primary: (
   )
 );
 
-$test-app-mat-accent: (
+$test-app-mat-primary: (
   50 : #e0f5f9,
   100 : #b3e7f1,
   200 : #80d7e8,
@@ -84,11 +86,44 @@ $test-app-mat-accent: (
   )
 );
 
-$test-app-primary: mat-palette($test-app-mat-accent);
-$test-app-accent:  mat-palette($test-app-mat-primary, A200, A100, A400);
+$test-app-mat-dark-red: (
+  50 : #f5e4e2,
+  100 : #e6bbb6,
+  200 : #d58e86,
+  300 : #c46056,
+  400 : #b73e31,
+  500 : #aa1c0d,
+  600 : #a3190b,
+  700 : #991409,
+  800 : #901107,
+  900 : #7f0903,
+  A100 : #ffafad,
+  A200 : #ff7d7a,
+  A400 : #ff4b47,
+  A700 : #ff332d,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #ffffff,
+  )
+);
+
+$test-app-primary: mat-palette($test-app-mat-primary);
+$test-app-accent:  mat-palette($test-app-mat-accent);
 
 // The warn palette is optional (defaults to red).
-$test-app-warn:    mat-palette($mat-red);
+$test-app-warn:    mat-palette($test-app-mat-dark-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $test-app-theme: mat-light-theme($test-app-primary, $test-app-accent, $test-app-warn);
